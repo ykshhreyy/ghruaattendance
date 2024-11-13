@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Attendance Management System with Confirmation Popup</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        /* Overlay style for the popup */
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 50;
+        }
+    </style>
+    <script>
+        // Function to show the confirmation popup
+        function showConfirmation(action) {
+            document.getElementById("confirmationOverlay").style.display = "flex";
+            document.getElementById("confirmationMessage").innerText = `Are you sure you want to mark ${action}?`;
+            document.getElementById("confirmButton").onclick = function() {
+                confirmAction(action);
+            };
+        }
+
+        // Function to hide the confirmation popup
+        function hideConfirmation() {
+            document.getElementById("confirmationOverlay").style.display = "none";
+        }
+
+        // Function to handle confirm button click
+        function confirmAction(action) {
+            alert(`Attendance marked as ${action}!`);
+            hideConfirmation();
+        }
+
+        // Function to add a new student to the table
+        function addStudent() {
+            const name = document.getElementById("studentName").value;
+            const rollNo = document.getElementById("studentRollNo").value;
+            const course = document.getElementById("course").value;
+            const semester = document.getElementById("semester").value;
+            const branch = document.getElementById("branch").value;
+
+            if (name && rollNo && course && semester && branch) {
+                const table = document.getElementById("studentTable");
+                const row = table.insertRow();
+                row.innerHTML = `
+                    <td class="border px-4 py-2">${table.rows.length - 1}</td>
+                    <td class="border px-4 py-2">${name}</td>
+                    <td class="border px-4 py-2">${rollNo}</td>
+                    <td class="border px-4 py-2">${course}</td>
+                    <td class="border px-4 py-2">${semester}</td>
+                    <td class="border px-4 py-2">${branch}</td>
+                    <td class="border px-4 py-2 flex gap-2">
+                        <button onclick="showConfirmation('Present')" class="bg-green-500 text-white px-3 py-1 rounded">P</button>
+                        <button onclick="showConfirmation('Absent')" class="bg-red-500 text-white px-3 py-1 rounded">A</button>
+                        <button class="text-blue-500 text-lg" onclick="viewRecord()">👀</button>
+                    </td>
+                `;
+                document.getElementById("studentForm").reset();
+            } else {
+                alert("Please fill out all fields.");
+            }
+        }
+
+        // Function to redirect to the view record page
+        function viewRecord() {
+            window.location.href = "index_05.html";
+        }
+    </script>
+</head>
+<body class="bg-gray-100">
+
+    <!-- Navbar -->
+    <nav class="bg-purple-700 p-4 flex justify-between items-center">
+        <h1 class="text-white text-2xl font-semibold">Attendance Management System</h1>
+        <button onclick="window.location.href='index_01.html'" class="bg-blue-500 text-white px-4 py-2 rounded">Logout</button>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="max-w-4xl mx-auto mt-8 p-4 bg-white rounded shadow">
+        <h2 class="text-center text-2xl font-semibold mb-4">Welcome user!</h2>
+        <div class="p-4 border rounded mb-8">
+            <h3 class="text-xl font-semibold mb-4">Add new student</h3>
+            <form id="studentForm" class="grid grid-cols-2 gap-4">
+                <input id="studentName" type="text" placeholder="Student Name" class="border p-2 rounded">
+                <input id="studentRollNo" type="text" placeholder="Student Roll No" class="border p-2 rounded">
+                <select id="course" class="border p-2 rounded">
+                    <option>Course</option>
+                    <option>B Tech</option>
+                    <option>M Tech</option>
+                    <option>BSC</option>
+                    <option>MSC</option>
+                    <option>BCA</option>
+                    <option>MCA</option>
+                </select>
+                <select id="semester" class="border p-2 rounded">
+                    <option>Semester</option>
+                    <option>I</option>
+                    <option>II</option>
+                    <option>III</option>
+                    <option>IV</option>
+                    <option>V</option>
+                    <option>VI</option>
+                    <option>VII</option>
+                    <option>VIII</option>
+                </select>
+                <input id="branch" type="text" placeholder="Branch" class="border p-2 rounded">
+            </form>
+            <button onclick="addStudent()" class="mt-4 bg-purple-500 text-white px-4 py-2 rounded">Add student</button>
+            <button onclick="window.location.href='index_04.html'" class="mt-4 bg-gray-500 text-white px-4 py-2 rounded">Check record</button>
+        </div>
+
+        <!-- Student Table -->
+        <h3 class="text-xl font-semibold mb-4">Mark Attendance</h3>
+        <table id="studentTable" class="w-full border">
+            <thead>
+                <tr class="bg-purple-500 text-white">
+                    <th class="border px-4 py-2">Sr.no.</th>
+                    <th class="border px-4 py-2">Name</th>
+                    <th class="border px-4 py-2">Roll No</th>
+                    <th class="border px-4 py-2">Course</th>
+                    <th class="border px-4 py-2">Semester</th>
+                    <th class="border px-4 py-2">Branch</th>
+                    <th class="border px-4 py-2">Attendance</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Rows will be dynamically added here -->
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Confirmation Popup -->
+    <div id="confirmationOverlay" class="overlay">
+        <div class="bg-white p-6 rounded-lg shadow-lg text-center max-w-sm w-full">
+            <div class="text-yellow-500 text-5xl mb-4">!</div>
+            <h2 class="text-xl font-semibold mb-2">Are you sure?</h2>
+            <p id="confirmationMessage" class="text-gray-600 mb-6">Confirm once before marking attendance!</p>
+            <div class="flex justify-center space-x-4">
+                <button onclick="hideConfirmation()" class="bg-gray-200 text-gray-700 px-4 py-2 rounded">Cancel</button>
+                <button id="confirmButton" class="bg-red-500 text-white px-4 py-2 rounded">Confirm</button>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

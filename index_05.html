@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100">
+
+    <!-- Navbar -->
+    <nav class="bg-white shadow p-4 flex justify-between items-center">
+        <div class="flex items-center space-x-3">
+            <img src="image3.png" alt="Logo" class="w-12 h-12">
+            <span class="text-xl font-bold text-gray-700">Dashboard</span>
+        </div>
+        <div class="flex items-center space-x-3">
+            <span class="text-gray-700">Welcome, <span class="font-semibold">STUDENT</span></span>
+            <img src="image2.png" alt="User" class="w-10 h-10 rounded-full">
+        </div>
+    </nav>
+
+    <!-- Sidebar -->
+    <div class="flex">
+        <aside class="w-64 bg-gray-800 text-white h-screen p-5">
+            <div class="flex flex-col space-y-5">
+                <button class="flex items-center space-x-3 p-2 rounded hover:bg-gray-700">
+                    <span>🏠</span><span>Home</span>
+                </button>
+                <button class="flex items-center space-x-3 p-2 rounded hover:bg-gray-700">
+                    <span>📅</span><span>Classes</span>
+                </button>
+                <button class="flex items-center space-x-3 p-2 rounded hover:bg-gray-700">
+                    <span>📈</span><span>Performance</span>
+                </button>
+                <button class="flex items-center space-x-3 p-2 rounded hover:bg-gray-700">
+                    <span>📋</span><span>Exams</span>
+                </button>
+                <button class="flex items-center space-x-3 p-2 rounded hover:bg-gray-700">
+                    <span>⚙️</span><span>Settings</span>
+                </button>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="flex-1 p-6">
+            <!-- Header Section -->
+            <div class="mb-6">
+                <h1 class="text-2xl font-bold">Welcome STUDENT </h1>
+                <p class="text-gray-600">Your Registration No.: GHRUA23011060999 | Roll No.: 69</p>
+            </div>
+
+            <!-- Dashboard Widgets -->
+            <div class="grid grid-cols-3 gap-6">
+                <!-- Attendance -->
+                <div class="bg-white p-4 rounded shadow">
+                    <h2 class="font-semibold text-gray-700">Attendance</h2>
+                    <div class="flex justify-center mt-4">
+                        <svg class="w-16 h-16 text-green-500" viewBox="0 0 20 20" fill="currentColor">
+                            <!-- Placeholder Circle -->
+                            <circle cx="10" cy="10" r="8" fill="#4ADE80" stroke="#3B82F6" stroke-width="2"/>
+                        </svg>
+                    </div>
+                    <p class="text-center text-gray-600">Present: 48.1% | Absent: 51.9%</p>
+                </div>
+
+                <!-- Performance -->
+                <div class="bg-white p-4 rounded shadow">
+                    <h2 class="font-semibold text-gray-700">Performance</h2>
+                    <p class="text-4xl font-bold text-purple-500 text-center mt-6">GOOD</p>
+                </div>
+
+                <!-- Upcoming Examinations -->
+                <div class="bg-white p-4 rounded shadow">
+                    <h2 class="font-semibold text-gray-700">CGPA</h2>
+                    <div class="flex justify-center items-center h-24 text-gray-400">
+                        <p>8.35</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Additional Information Rows -->
+            <div class="grid grid-cols-2 gap-6 mt-6">
+                <!-- Upcoming Classes -->
+                <div class="bg-white p-4 rounded shadow">
+                    <h2 class="font-semibold text-gray-700">Upcoming Classes</h2>
+                    <p class="text-gray-400 mt-6">No upcoming classes scheduled.</p>
+                    <button class="bg-green-500 text-white py-2 px-4 rounded mt-4">Show All</button>
+                </div>
+
+                <!-- Recent Published Results -->
+                <div class="bg-white p-4 rounded shadow">
+                    <h2 class="font-semibold text-gray-700">Recent Published Results</h2>
+                    <div class="flex justify-center items-center h-24 text-gray-400">
+                        <p>All clear</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Registered Courses Table -->
+            <div class="bg-white p-4 rounded shadow mt-6">
+                <h2 class="font-semibold text-gray-700">Current Registered Courses</h2>
+                <table class="w-full mt-4">
+                    <thead class="bg-gray-200">
+                        <tr>
+                            <th class="py-2 px-4 text-left">S.No</th>
+                            <th class="py-2 px-4 text-left">Course Code</th>
+                            <th class="py-2 px-4 text-left">Course Name</th>
+                            <th class="py-2 px-4 text-left">Register Category</th>
+                            <th class="py-2 px-4 text-left">Component</th>
+                            <th class="py-2 px-4 text-left">Credit</th>
+                            <th class="py-2 px-4 text-left">Registration Type</th>
+                            <th class="py-2 px-4 text-left">Faculty</th>
+                            <th class="py-2 px-4 text-left">Attendance %</th>
+                            <th class="py-2 px-4 text-left">Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="border-t py-2 px-4">1</td>
+                            <td class="border-t py-2 px-4">CS101</td>
+                            <td class="border-t py-2 px-4">MDM-1</td>
+                            <td class="border-t py-2 px-4">Core</td>
+                            <td class="border-t py-2 px-4">Lecture</td>
+                            <td class="border-t py-2 px-4">3</td>
+                            <td class="border-t py-2 px-4">Mandatory</td>
+                            <td class="border-t py-2 px-4">Dhannashree Tajne</td>
+                            <td class="border-t py-2 px-4">75%</td>
+                            <td class="border-t py-2 px-4">Active</td>
+                        </tr>
+                        <!-- Additional rows can be added here -->
+                    </tbody>
+                </table>
+            </div>
+        </main>
+    </div>
+</body>
+</html>
